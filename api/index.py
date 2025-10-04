@@ -45,4 +45,4 @@ async def get_latency_stats(request: Request):
                 "breaches": breaches
             })
 
-            return {"regions": result}
+    return {"regions": result}
