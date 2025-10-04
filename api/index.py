@@ -30,7 +30,7 @@ async def get_latency_stats(request: Request):
 
     result = []
     for region in region_to_process:
-        region_df = df[df['region'] == region]
+        region_df = df[df['regions'] == region]
         if region_df.empty:
             avg_latency = round(region_df['latency_ms'].mean(), 2)
             p95_latency = round(np.percentile(region_df['latency_ms'], 95), 2)
@@ -38,7 +38,7 @@ async def get_latency_stats(request: Request):
             breaches = int(region_df[region_df['latency_ms'] > threshold].shape[0])
 
             result.append({
-                "region": region,
+                "regions": region,
                 "average_latency": avg_latency,
                 "p95_latency": p95_latency,
                 "avg_uptime": avg_uptime,
