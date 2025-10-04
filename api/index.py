@@ -25,7 +25,7 @@ async def root():
 @app.post("/api/")
 async def get_latency_stats(request: Request):
     payload = await request.json()
-    region_to_process = payload.get("region",[])
+    region_to_process = payload.get("regions",[])
     threshold = payload.get("threshold_ms",200)
 
     result = []
